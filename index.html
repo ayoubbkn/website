@@ -3,151 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Benchmark Tutors - Premium Tutoring Services</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <title>Benchmark Tutors - Ayoub's Tutor Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --dark-green: #003300;
+            --dark-green: #00400a;
+            --darker-green: #001a04;
             --gold: #FFD700;
+            --light-gold: #FFF8DC;
         }
         body, html {
-            height: 100%;
             margin: 0;
+            padding: 0;
             font-family: 'Lato', sans-serif;
-            background-color: var(--dark-green);
-            color: var(--gold);
-            overflow-x: hidden;
+            color: var(--light-gold);
+            line-height: 1.6;
+            scroll-behavior: smooth;
         }
-        .container {
+        .landing-page, .profile-page {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            box-sizing: border-box;
-            background-image: linear-gradient(45deg, rgba(0,0,0,0.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0.1)),
-                              linear-gradient(45deg, rgba(0,0,0,0.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0.1));
+        }
+        .landing-page {
+            position: relative;
+            background-color: var(--dark-green);
+            overflow: hidden;
+        }
+
+        .landing-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(45deg, rgba(0,0,0,0.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0.1)),
+                linear-gradient(45deg, rgba(0,0,0,0.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0.1));
             background-size: 60px 60px;
             background-position: 0 0, 30px 30px;
-            transition: opacity 0.5s ease;
+            mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+            z-index: 1;
+        }
+
+        .landing-page > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-page {
+            background-image: linear-gradient(to bottom, var(--dark-green), var(--darker-green));
+            padding: 50px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
         }
         h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
+            font-size: 5rem;
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             letter-spacing: 3px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
+        h2 {
+            font-size: 2.5rem;
+            margin-top: 2rem;
+        }
         .tagline {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             text-align: center;
             margin-bottom: 2rem;
             font-weight: 300;
             letter-spacing: 1px;
+            color: var(--gold);
         }
-        .contact-container {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            margin-top: 2rem;
+        .profile-image-container {
+            text-align: center;
+            margin-bottom: 2rem;
         }
-        .contact {
+        .profile-image {
+            display: block;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            object-fit: cover;
+        }
+        .profile-caption {
             font-size: 1.2rem;
-            margin: 0 20px;
+            color: var(--gold);
+            font-weight: 600;
         }
-        a {
+        .section {
+            margin-bottom: 3rem;
+        }
+        .testimonials {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 3rem;
+        }
+        .testimonial {
+            background-color: rgba(255, 215, 0, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .testimonial:hover {
+            transform: translateY(-5px);
+        }
+    
+        .contact {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        }
+
+        .contact h2 {
+        margin: 0;
+        font-size: 2.5rem;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             color: var(--gold);
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            transition: all 0.3s ease;
-            padding: 10px 15px;
-            border: 1px solid var(--gold);
+            padding: 10px 20px;
+            border: 2px solid var(--gold);
             border-radius: 5px;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            background-color: transparent;
+            min-width: 150px;
         }
-        a:hover {
+
+        .contact-btn:hover {
             background-color: rgba(255,215,0,0.1);
             transform: translateY(-3px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
-        svg {
+        .contact-btn svg {
             margin-right: 10px;
-            fill: currentColor;
+            width: 24px;
+            height: 24px;
         }
-        .construction-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.5s ease;
-            z-index: 1000;
-        }
-        .construction-message {
-            color: white;
-            font-size: 2rem;
+        .profile-page .contact h2 {
             text-align: center;
+            margin-bottom: 20px;
         }
         @media (max-width: 768px) {
             h1 {
-                font-size: 3rem;
+                font-size: 3.5rem;
+            }
+            h2 {
+                font-size: 2rem;
             }
             .tagline {
-                font-size: 1rem;
+                font-size: 1.2rem;
             }
             .contact {
+                flex-direction: column;
+            }
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+            .profile-caption {
                 font-size: 1rem;
             }
         }
+        @media screen and (min-width: 1024px) {
+        .profile-page .contact-btn {
+            padding: 8px 15px;
+            min-width: 150px; /* Adjust this value as needed */
+            max-height: 40px;
+            height: auto; /* This will allow the button to size based on content */
+        }
+
+        @media (max-width: 768px) {
+        .contact {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .contact h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+         }
+
+        .profile-page .contact-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="landing-page">
         <h1>Benchmark Tutors</h1>
         <p class="tagline">Elevating Education, Inspiring Excellence</p>
-        <div class="contact-container">
+        <div class="contact">
+            <a href="https://wa.me/447494176755" target="_blank" class="contact-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                </svg>
+                WhatsApp
+            </a>
+            <a href="mailto:ayoub@benchmarktutors.co.uk" class="contact-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/>
+                </svg>
+                Email
+            </a>
+        </div>
+    </div>
+
+    <div class="profile-page">
+        <div class="container">
+            <h2>About Ayoub</h2>
+            <div class="profile-image-container">
+                <img src="images/headshot.jpeg" alt="Ayoub" class="profile-image">
+                <p class="profile-caption">Ayoub - Founder & Head Tutor</p>
+            </div>
+            
+            <div class="section">
+                <h2>Biography</h2>
+                <p>I graduated from Imperial College London with a BSc degree in 'Physics with Theoretical Physics' in 2020 and from University College London with an MSc degree in 'Medical Physics and Bioengineering' in 2022. Since then, I have become a distinguished full-time tutor of Maths and Science to all ages from 7-18 years old.</p>
+            </div>
+            
+            <div class="section">
+                <h2>Teaching Experience</h2>
+                <p>Through over 1000 hours of tutoring, I have helped students of various backgrounds and abilities fulfil their potential. Over my years working as a tutor, I've always tailored my teaching style according to the students' and parents' goals. These goals have ranged from securing a place at a highly competitive boarding school, to consolidating that A grade at A-Level required for a student's university offer.</p>
+            </div>
+            
+            <div class="section">
+                <h2>Testimonials</h2>
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <p>"Ayoub helped my daughter through her A-Level retakes during her gap year and if it wasn't for him, she wouldn't have achieved the grades she needed to get into her chosen university. We are very grateful to him, and we would highly recommend him."</p>
+                        <p><strong>- Barbara</strong></p>
+                    </div>
+                    <div class="testimonial">
+                        <p>"Ayoub home-schooled our daughter in the 6 months before her GCSE double science exam with the aim of securing a pass, which with Ayoub's help, she did comfortably. We were so impressed by Ayoub's approach to covering the full curriculum in a very limited timeframe and by his very well-planned lessons."</p>
+                        <p><strong>- Antonia</strong></p>
+                    </div>
+                    <div class="testimonial">
+                        <p>"Ayoub is an amazing Math tutor. He not only helped my daughter secure excellent grades in her GCSE, he also built her confidence for continuing to take Math at A-level. I would highly recommend Ayoub for GCSE and A level Math!"</p>
+                        <p><strong>- Padmini</strong></p>
+                    </div>
+                    <div class="testimonial">
+                        <p>"Ayoub is an excellent tutor. Over the course of 3 months, he helped our daughter increase her GCSE predicted grades of 5/6 in all 3 sciences to grade 7s and 8. He explained difficult topics in a simple and manageable way. He also tutored her in GCSE Maths where she increased her grade from a 7 to an 8. We are extremely happy and grateful to Ayoub for all his help and support - we would highly recommend him."</p>
+                        <p><strong>- Militsa</strong></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Teaching Approach</h2>
+                <p>My interactive and engaging, whilst very focused lessons always earn me praise from both the children and parents I work with. I have extensive experience supporting students preparing for GCSE and A-Level examinations in both the short-term and long-term. I've home-schooled students for periods of up to 2 years in Maths and all Sciences and I've also delivered numerous one-month long booster revision classes. My focus on exam technique has always been commended as the main reason my students consistently achieve grades higher than their predicted grade.</p>
+            </div>
+            
             <div class="contact">
-                <a href="https://wa.me/447494176755" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                <h2>Contact Ayoub:</h2>
+                <a href="https://wa.me/447494176755" target="_blank" class="contact-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                    </svg>
                     WhatsApp
                 </a>
-            </div>
-            <div class="contact">
-                <a href="mailto:ayoub@benchmarktutors.co.uk">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                <a href="mailto:ayoub@benchmarktutors.co.uk" class="contact-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/>
+                    </svg>
                     Email
                 </a>
             </div>
         </div>
     </div>
-    <div class="construction-overlay">
-        <div class="construction-message">
-            Website Under Construction 🔨
-        </div>
-    </div>
-    <script>
-        window.addEventListener('scroll', function() {
-            var overlay = document.querySelector('.construction-overlay');
-            var container = document.querySelector('.container');
-            var scrollPosition = window.scrollY;
-            var windowHeight = window.innerHeight;
-            
-            if (scrollPosition > windowHeight * 0.1) {
-                overlay.style.opacity = '1';
-                container.style.opacity = '0';
-            } else {
-                overlay.style.opacity = '0';
-                container.style.opacity = '1';
-            }
-        });
-    </script>
 </body>
 </html>
